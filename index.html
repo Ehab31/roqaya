@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Roqaya ❤️</title>
+
+<style>
+:root{
+  --pink:#ff4d8d;
+  --violet:#8a6bff;
+  --mint:#46ffd7;
+  --text:#ffffff;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color:var(--text);
+  overflow:hidden;
+}
+
+/* Screens */
+.screen{
+  position:absolute;
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  transition:opacity .8s ease;
+}
+
+.hidden{
+  opacity:0;
+  pointer-events:none;
+}
+
+/* FIRST SCREEN BACKGROUND */
+#firstScreen{
+  background:linear-gradient(135deg,#ff758c,#8a6bff);
+}
+
+/* Romantic Box */
+.loveBox{
+ width:450px;          /* Increased from 350px */
+  padding:40px;         /* More spacing */
+  border-radius:30px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(18px);
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  position:relative;
+}
+
+/* Image */
+.loveBox img{
+  width:200px;          /* Increased size */
+  height:200px;
+  object-fit:cover;
+  border-radius:20px;   /* Slightly rounded square (change to 50% if you want circle) */
+  border:5px solid var(--pink);
+  margin-bottom:25px;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+/* Heading */
+h1{
+  font-size:26px;
+  margin-bottom:20px;
+}
+
+/* Buttons */
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:12px;
+  margin:10px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:16px;
+  transition:.3s;
+}
+
+.yesBtn{
+  background:linear-gradient(90deg,var(--pink),var(--violet));
+  color:white;
+}
+
+.yesBtn:hover{
+  transform:scale(1.05);
+}
+
+.noBtn{
+  background:white;
+  color:black;
+}
+
+.noBtn:hover{
+  transform:scale(1.05);
+}
+
+/* SECOND SCREEN */
+#secondScreen{
+  background:linear-gradient(180deg,#0b0b1f,#1a1a40);
+  flex-direction:column;
+}
+
+/* Apology Card */
+.card{
+  max-width:800px;
+  width:90%;
+  padding:40px;
+  border-radius:20px;
+  background:rgba(255,255,255,.07);
+  backdrop-filter:blur(12px);
+  box-shadow:0 25px 70px rgba(0,0,0,.5);
+}
+
+p{
+  font-size:18px;
+  line-height:1.7;
+  min-height:120px;
+}
+
+/* Floating Hearts */
+.heart{
+  position:absolute;
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:.6;
+}
+
+@keyframes float{
+  0%{transform:translateY(0) scale(.8);opacity:0}
+  10%{opacity:.8}
+  100%{transform:translateY(-800px) scale(1.4);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- FIRST SCREEN -->
+<div class="screen" id="firstScreen">
+  <div class="loveBox">
+    <img src="yourimage.jpg" alt="Roqaya">
+    <h1>If you love me click YES ❤️</h1>
+    <button class="yesBtn" onclick="goNext()">YES 💕</button>
+    <button class="noBtn" onclick="noClick()">NO 😅</button>
+  </div>
+</div>
+
+<!-- SECOND SCREEN -->
+<div class="screen hidden" id="secondScreen">
+  <div class="card">
+    <h1>Roqaya… I’m Sorry ❤️</h1>
+    <p id="message"></p>
+    <button onclick="showLove()">Click if you still love me 💕</button>
+  </div>
+</div>
+
+<script>
+function goNext(){
+  document.getElementById("firstScreen").classList.add("hidden");
+  document.getElementById("secondScreen").classList.remove("hidden");
+}
+
+function noClick(){
+  alert("Warning: Clicking NO may result in unlimited hugs until you change your mind 😏💕");
+}
+
+/* Apology Text */
+const text = `
+Roqaya,
+
+I’m truly sorry for everything that hurt you. I know I made mistakes, and I take full responsibility for them.
+
+I love you more than you can imagine. You are my favorite person.
+
+Every day you’re not here feels heavy and incomplete for me.
+
+The days when you’re here, when we talk and share even the smallest moments, are the happiest days of my life.
+
+Your presence makes everything better.
+
+— Ahmed ❤️
+`;
+
+let i = 0;
+function typeWriter(){
+  if(i < text.length){
+    document.getElementById("message").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 30);
+  }
+}
+
+typeWriter();
+
+function showLove(){
+  alert("Thank you for giving me another chance ❤️");
+  for(let j=0;j<20;j++){
+    let heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"%";
+    heart.style.bottom="-20px";
+    heart.style.animationDuration=(4+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),7000);
+  }
+}
+</script>
+
+</body>
+</html>
